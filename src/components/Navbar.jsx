@@ -1,143 +1,146 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 
-export default function Navbar() {
-	const [open, setOpen] = useState(false);
+const NavBar = ({ mode, handleMode }) => {
+	const [nav, setNav] = useState(false);
 
 	useEffect(() => {
-		document.body.style.overflowX = 'hidden';
-		document.body.style.maxWidth = '100vw';
-		open
-			? (document.body.style.overflowY = 'hidden')
-			: (document.body.style.overflowY = 'auto');
-	}, [open]);
+		// if (nav) {
+		// 	document.body.style.overflow = 'auto';
+		// } else {
+		// 	document.body.style.overflow = 'hidden';
+		// }
+		// return () => {
+		// 	document.body.style.overflow = 'auto';
+		// };
+	}, [nav]);
 
-	function openNavbar() {
-		setOpen(true);
-	}
-
-	function closeNavBar() {
-		setOpen(false);
-	}
+	const handleNav = () => {
+		setNav(prevNav => !prevNav);
+	};
 
 	return (
-		<>
-			<nav className='bg-gray-900 text-white py-4 md:py-8 sticky top-0 left-0 w-full shadow-xl z-50'>
-				<div className='w-10/12 mx-auto flex justify-between items-center'>
-					<ul className='w-full justify-between items-center gap-4 hidden md:flex'>
-						<li>
-							<Link className='pointer' to={'/'}>
-								Home
-							</Link>
-						</li>
-						<li>
-							<Link to={'/'}>Facilities</Link>
-						</li>
-						<li>
-							<Link to={'/'}>Funding Programs</Link>
-						</li>
-						<li>
-							<Link to={'/'}>IIC</Link>
-						</li>
-						<li>
-							<Link to={'/'}>Events</Link>
-						</li>
-						<li>
-							<Link to={'/'}>Mentors</Link>
-						</li>
-						<li>
-							<Link to={'/'}>Team</Link>
-						</li>
-						<li>
-							<Link to={'/'}>Courses</Link>
-						</li>
-						<li>
-							<Link
-								to={'/'}
-								className='bg-primary px-6 py-4 font-semibold rounded'
-							>
-								Apply Now
-							</Link>
-						</li>
-					</ul>
-					<button
-						className='md:hidden text-4xl self-end'
-						onClick={openNavbar}
+		<div
+			name='home'
+			className={`flex flex-row items-center justify-between h-24 max-w-[1240px] mx-auto px-6 bg-gray-900 text-white`}
+		>
+			<ul
+				className={`flex-row  text-lg w-full items-center gap-4 hidden md:flex justify-between`}
+			>
+				<li>
+					<Link className='pointer' to={'/'}>
+						Home
+					</Link>
+				</li>
+				<li>
+					<Link to={'/'}>Facilities</Link>
+				</li>
+				<li>
+					<Link to={'/'}>Funding Programs</Link>
+				</li>
+				<li>
+					<Link to={'/'}>IIC</Link>
+				</li>
+				<li>
+					<Link to={'/'}>Events</Link>
+				</li>
+				<li>
+					<Link to={'/'}>Mentors</Link>
+				</li>
+				<li>
+					<Link to={'/'}>Team</Link>
+				</li>
+				<li>
+					<Link to={'/'}>Courses</Link>
+				</li>
+				<li>
+					<Link
+						to={'/'}
+						className='bg-primary px-6 py-4 font-semibold rounded'
 					>
-						<FiMenu />
-					</button>
-				</div>
-
-				{/* Mobile NavBar */}
-			</nav>
+						Apply Now
+					</Link>
+				</li>
+			</ul>
 
 			<div
-				className={`bg-gray-900 min-h-screen absolute top-0 right-0 md:hidden items-center justify-between w-full flex-col text-white px-10 ${
-					open ? 'translate-x-0' : 'translate-x-full'
-				} transition-transform ease-linear duration-300 `}
+				className={`cursor-pointer block md:hidden z-50 ${
+					nav ? 'fixed top-10 left-6' : ''
+				}`}
+				onClick={handleNav}
 			>
-				<button
-					onClick={closeNavBar}
-					className='text-4xl absolute top-7 right-8'
-				>
-					<FiX />
-				</button>
-				<h3 className='text-3xl text-wrap text-left mt-5'>
-					Directorate of Entrepreneurship and Innovation
-				</h3>
-				<ul className='h-full flex justify-center items-center flex-col gap-6 md:hidden mt-6'>
+				{!nav ? (
+					<AiOutlineMenu size={20} />
+				) : (
+					<AiOutlineClose size={20} />
+				)}
+			</div>
+
+			<div
+				className={`${
+					nav
+						? 'fixed left-0 top-0 w-[100%] z-40 h-full border-r ease-in-out duration-500'
+						: 'fixed left-[-100%]'
+				} bg-gray-900 text-white`}
+			>
+				<ul className='pt-24 uppercase gap-4 flex flex-col px-6 justify-center items-center my-auto'>
+					<li className='mb-6'>
+						<h3 className='text-xl text-wrap text-left mt-5'>
+							Directorate of Entrepreneurship and Innovation
+						</h3>
+					</li>
 					<li>
-						<Link to={'/'} onClick={closeNavBar}>
+						<Link to={'/'} onClick={handleNav}>
 							Home
 						</Link>
 					</li>
 					<li>
-						<Link to={'/'} onClick={closeNavBar}>
+						<Link to={'/'} onClick={handleNav}>
 							Facilities
 						</Link>
 					</li>
 					<li>
-						<Link to={'/'} onClick={closeNavBar}>
+						<Link to={'/'} onClick={handleNav}>
 							Funding Programs
 						</Link>
 					</li>
 					<li>
-						<Link to={'/'} onClick={closeNavBar}>
+						<Link to={'/'} onClick={handleNav}>
 							IIC
 						</Link>
 					</li>
 					<li>
-						<Link to={'/'} onClick={closeNavBar}>
+						<Link to={'/'} onClick={handleNav}>
 							Events
 						</Link>
 					</li>
 					<li>
-						<Link to={'/'} onClick={closeNavBar}>
+						<Link to={'/'} onClick={handleNav}>
 							Mentors
 						</Link>
 					</li>
 					<li>
-						<Link to={'/'} onClick={closeNavBar}>
+						<Link to={'/'} onClick={handleNav}>
 							Team
 						</Link>
 					</li>
 					<li>
-						<Link to={'/'} onClick={closeNavBar}>
-							Courses
-						</Link>
+						<Link to={'/'}>Courses</Link>
 					</li>
-					<li className='mt-2'>
+					<li className='mt-6'>
 						<Link
 							to={'/'}
-							onClick={closeNavBar}
-							className='bg-primary px-6 py-4 font-semibold rounded'
+							onClick={handleNav}
+							className='bg-primary px-6 py-4 font-semibold rounded mt-6'
 						>
 							Apply Now
 						</Link>
 					</li>
 				</ul>
 			</div>
-		</>
+		</div>
 	);
-}
+};
+
+export default NavBar;
