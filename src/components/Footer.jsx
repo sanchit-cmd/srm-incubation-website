@@ -88,8 +88,8 @@ export default function Footer() {
 							</li>
 						</nav>
 					</div> */}
-					<div className=''>
-						<span className='inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start'>
+					<div className='mx-auto'>
+						<span className='mx-auto inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start'>
 							<a className='text-white '>
 								<svg
 									fill='currentColor'
