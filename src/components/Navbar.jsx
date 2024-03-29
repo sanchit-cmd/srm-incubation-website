@@ -6,12 +6,10 @@ export default function Navbar() {
 	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
+		document.body.style.overflowX = 'hidden';
 		open
-			? (document.body.style.overflowX = 'auto')
-			: (document.body.style.overflowX = 'hidden');
-		// if(open) {
-		// 	document.body.style.overflowX = 'auto';
-		// }
+			? (document.body.style.overflowY = 'hidden')
+			: (document.body.style.overflowY = 'auto');
 	}, [open]);
 
 	function openNavbar() {
