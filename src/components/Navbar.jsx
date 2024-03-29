@@ -7,6 +7,7 @@ export default function Navbar() {
 
 	useEffect(() => {
 		document.body.style.overflowX = 'hidden';
+		document.body.style.maxWidth = '100vw';
 		open
 			? (document.body.style.overflowY = 'hidden')
 			: (document.body.style.overflowY = 'auto');
@@ -69,74 +70,74 @@ export default function Navbar() {
 				</div>
 
 				{/* Mobile NavBar */}
-
-				<div
-					className={`bg-gray-900 min-h-screen absolute top-0 right-0 md:hidden items-center justify-between w-full flex-col text-white px-10 ${
-						open ? 'translate-x-0' : 'translate-x-full'
-					} transition-transform ease-linear duration-300 `}
-				>
-					<button
-						onClick={closeNavBar}
-						className='text-4xl absolute top-7 right-8'
-					>
-						<FiX />
-					</button>
-					<h3 className='text-3xl text-wrap text-left mt-5'>
-						Directorate of Entrepreneurship and Innovation
-					</h3>
-					<ul className='h-full flex justify-center items-center flex-col gap-6 md:hidden mt-6'>
-						<li>
-							<Link to={'/'} onClick={closeNavBar}>
-								Home
-							</Link>
-						</li>
-						<li>
-							<Link to={'/'} onClick={closeNavBar}>
-								Facilities
-							</Link>
-						</li>
-						<li>
-							<Link to={'/'} onClick={closeNavBar}>
-								Funding Programs
-							</Link>
-						</li>
-						<li>
-							<Link to={'/'} onClick={closeNavBar}>
-								IIC
-							</Link>
-						</li>
-						<li>
-							<Link to={'/'} onClick={closeNavBar}>
-								Events
-							</Link>
-						</li>
-						<li>
-							<Link to={'/'} onClick={closeNavBar}>
-								Mentors
-							</Link>
-						</li>
-						<li>
-							<Link to={'/'} onClick={closeNavBar}>
-								Team
-							</Link>
-						</li>
-						<li>
-							<Link to={'/'} onClick={closeNavBar}>
-								Courses
-							</Link>
-						</li>
-						<li className='mt-2'>
-							<Link
-								to={'/'}
-								onClick={closeNavBar}
-								className='bg-primary px-6 py-4 font-semibold rounded'
-							>
-								Apply Now
-							</Link>
-						</li>
-					</ul>
-				</div>
 			</nav>
+
+			<div
+				className={`bg-gray-900 min-h-screen absolute top-0 right-0 md:hidden items-center justify-between w-full flex-col text-white px-10 ${
+					open ? 'translate-x-0' : 'translate-x-full'
+				} transition-transform ease-linear duration-300 `}
+			>
+				<button
+					onClick={closeNavBar}
+					className='text-4xl absolute top-7 right-8'
+				>
+					<FiX />
+				</button>
+				<h3 className='text-3xl text-wrap text-left mt-5'>
+					Directorate of Entrepreneurship and Innovation
+				</h3>
+				<ul className='h-full flex justify-center items-center flex-col gap-6 md:hidden mt-6'>
+					<li>
+						<Link to={'/'} onClick={closeNavBar}>
+							Home
+						</Link>
+					</li>
+					<li>
+						<Link to={'/'} onClick={closeNavBar}>
+							Facilities
+						</Link>
+					</li>
+					<li>
+						<Link to={'/'} onClick={closeNavBar}>
+							Funding Programs
+						</Link>
+					</li>
+					<li>
+						<Link to={'/'} onClick={closeNavBar}>
+							IIC
+						</Link>
+					</li>
+					<li>
+						<Link to={'/'} onClick={closeNavBar}>
+							Events
+						</Link>
+					</li>
+					<li>
+						<Link to={'/'} onClick={closeNavBar}>
+							Mentors
+						</Link>
+					</li>
+					<li>
+						<Link to={'/'} onClick={closeNavBar}>
+							Team
+						</Link>
+					</li>
+					<li>
+						<Link to={'/'} onClick={closeNavBar}>
+							Courses
+						</Link>
+					</li>
+					<li className='mt-2'>
+						<Link
+							to={'/'}
+							onClick={closeNavBar}
+							className='bg-primary px-6 py-4 font-semibold rounded'
+						>
+							Apply Now
+						</Link>
+					</li>
+				</ul>
+			</div>
 		</>
 	);
 }
